@@ -16,12 +16,13 @@ int main(){
     float dt;
 
     SpaceObject earth{sf::Vector2f(1000/factor, 750/factor), factor, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
-    SpaceObject human{sf::Vector2f(1000/factor, 750/factor + EARTH_RADIUS + 10000), factor, 1000000, sf::Color{128, 0, 128}};
+    SpaceObject human{sf::Vector2f(1000/factor, 750/factor + EARTH_RADIUS), factor, 1000000, sf::Color{128, 0, 128}};
 
-    human.mvelocity.x = 5000;
+    human.mvelocity.x = 9000;
+
+    float mousex;
 
     while(window.isOpen()){
-        try{
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -31,8 +32,10 @@ int main(){
             window.close();
         }
 
+        mousex = std::abs(sf::Mouse::getPosition(window).x);
+
         dt = deltaClock.restart().asSeconds();
-        dt *= 100;
+        dt *= 500;
 
         window.clear(sf::Color::Black);
         window.draw(earth);
@@ -40,18 +43,9 @@ int main(){
 
         human.Gvel(earth, dt);
 
-
-
         human.moveMVel(dt);
 
-        std::cout << human.mvelocity.x << " " << human.mvelocity.y << '\n';
-
-        }
-        catch(const std::exception& e){
-            std::cerr << "Somethings fucked up: " << e.what() << '\n';
-            
-            return EXIT_FAILURE;
-        }
+        std::cout << "Mouse: " << mousex * 0.01 << "velocity: (" << human.mvelocity.x << ", " << human.mvelocity.y << ")" << '\n';
 
         window.display();
     }

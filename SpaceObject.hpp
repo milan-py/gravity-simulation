@@ -4,7 +4,7 @@
 
 constexpr float GRAVITATIONAL_CONSTANT = 6.67408e-11;
 
-
+#define isNegative(x) ((x) < 0)
 
 class SpaceObject : public sf::CircleShape{
     public: 
@@ -13,6 +13,7 @@ class SpaceObject : public sf::CircleShape{
             setMPosition(mposition);
             setFillColor(color);
         }
+
         // the functions with M should be used to scale everything on the screen
         void moveMVel(float dt = 1){
             moveM(mvelocity, dt);
@@ -46,6 +47,7 @@ class SpaceObject : public sf::CircleShape{
 
         // see how much attracted by other object
         float Gacc(SpaceObject &other){
+            std::cout << "distance: " << distance(other) << ", ";
             return (GRAVITATIONAL_CONSTANT*other.mass)/(distance(other) * distance(other));
         }
 
@@ -57,27 +59,34 @@ class SpaceObject : public sf::CircleShape{
         void Gvel(SpaceObject &other, float dt = 1){
             float acceleration = Gacc(other);
             sf::Vector2f distvec = (*this) - other;
+            sf::Vector2f velvec;
 
             std::cout << "distance(" << distvec.x << ", " << distvec.y << ") ";
 
-            
-            if(distvec.y <= distvec.x){
-                distvec.y = acceleration * (distvec.y/distvec.x);
-                distvec.x = acceleration - distvec.y;
+            bool x_negative = isNegative(distvec.x);
+            bool y_negative = isNegative(distvec.y);
+
+            distvec.x = abs(distvec.x);
+            distvec.y = abs(distvec.y);
+
+            velvec.x = (distvec.x / (distvec.x+distvec.y)) * acceleration;
+            velvec.y = (distvec.y / (distvec.x+distvec.y)) * acceleration;
+
+            if(x_negative != isNegative(velvec.x)){
+                velvec.x = -velvec.x;
             }
-            else if(distvec.y >= distvec.x){
-                distvec.x = acceleration * (distvec.x/distvec.y);
-                distvec.y = acceleration - distvec.x;
+            if(y_negative != isNegative(velvec.y)){
+                velvec.y = -velvec.y;
             }
             
-            distvec.x = -distvec.x;           
-            distvec.y = -distvec.y;            
+            
+            velvec.x *= dt;
+            velvec.y *= dt;
 
-            distvec.x *= dt;
-            distvec.y *= dt;
+            velvec.x = -velvec.x;
+            velvec.y = -velvec.y;
 
-
-            mvelocity += distvec;
+            mvelocity += velvec;
         }
 
 		friend std::ostream& operator<<(std::ostream& os, const SpaceObject& obj);
