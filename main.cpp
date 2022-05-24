@@ -2,11 +2,16 @@
 #include <iostream>
 #include "SpaceObject.hpp"
 
-constexpr float factor = 0.00004f;
+constexpr float FACTOR = 0.000001f;
 
-constexpr float EARTH_GRAVITY_ACCELERATION = 9.81f;
-constexpr float EARTH_MASS = 5.972e24;
-constexpr float EARTH_RADIUS = 6371000;
+constexpr int MOON_DISTANCE = 384400000;
+
+constexpr float PLANET1_MASS = 1.972e25f;
+constexpr float PlANET1_RADIUS = 6371000;
+constexpr float PLANET2_MASS = 5.972e24f;
+constexpr float PLANET2_RADIUS = 6371000;
+
+
 
 int main(){
     sf::RenderWindow window(sf::VideoMode(2000, 1500), "lol");
@@ -15,12 +20,12 @@ int main(){
     sf::Clock deltaClock;
     float dt;
 
-    SpaceObject earth{sf::Vector2f(1000/factor, 750/factor), factor, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
-    SpaceObject human{sf::Vector2f(1000/factor, 750/factor + EARTH_RADIUS), factor, 1000000, sf::Color{128, 0, 128}};
+    SpaceObject planet1{sf::Vector2f(500/FACTOR, 500/FACTOR), FACTOR, PLANET2_RADIUS, sf::Color::Blue, PLANET2_MASS};
+    SpaceObject planet2{sf::Vector2f(500/FACTOR, 500/FACTOR + MOON_DISTANCE), FACTOR, PlANET1_RADIUS, sf::Color::White, PLANET1_MASS};
 
-    human.mvelocity.x = 9000;
 
-    float mousex;
+    planet2.mvelocity.x = 500;
+    planet1.mvelocity.x = -500;
 
     while(window.isOpen()){
         while (window.pollEvent(event)){
@@ -32,20 +37,18 @@ int main(){
             window.close();
         }
 
-        mousex = std::abs(sf::Mouse::getPosition(window).x);
-
         dt = deltaClock.restart().asSeconds();
-        dt *= 500;
+        dt *= 100000;
 
         window.clear(sf::Color::Black);
-        window.draw(earth);
-        window.draw(human);
+        window.draw(planet1);
+        window.draw(planet2);
 
-        human.Gvel(earth, dt);
+        planet1.Gvel(planet2, dt);
+        planet2.Gvel(planet1, dt);
 
-        human.moveMVel(dt);
-
-        std::cout << "Mouse: " << mousex * 0.01 << "velocity: (" << human.mvelocity.x << ", " << human.mvelocity.y << ")" << '\n';
+        planet1.moveMVel(dt);
+        planet2.moveMVel(dt);
 
         window.display();
     }

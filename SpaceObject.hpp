@@ -47,7 +47,6 @@ class SpaceObject : public sf::CircleShape{
 
         // see how much attracted by other object
         float Gacc(SpaceObject &other){
-            std::cout << "distance: " << distance(other) << ", ";
             return (GRAVITATIONAL_CONSTANT*other.mass)/(distance(other) * distance(other));
         }
 
@@ -61,7 +60,6 @@ class SpaceObject : public sf::CircleShape{
             sf::Vector2f distvec = (*this) - other;
             sf::Vector2f velvec;
 
-            std::cout << "distance(" << distvec.x << ", " << distvec.y << ") ";
 
             bool x_negative = isNegative(distvec.x);
             bool y_negative = isNegative(distvec.y);
