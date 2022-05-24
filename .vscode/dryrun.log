@@ -1,0 +1,5 @@
+make.exe --dry-run --keep-going --print-directory
+make: Entering directory 'c:/Users/milan/Desktop/graphics/SFML'
+g++ main.cpp -o bin/main.exe -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -Wall -Wextra
+make: Leaving directory 'c:/Users/milan/Desktop/graphics/SFML'
+ 
