@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue May 24 21:27:51 2022
+# Make data base, printed on Wed May 25 12:01:06 2022
 
 # Variables
 
@@ -25,8 +26,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7d3258d1-9617-4ac3-acf9-ba0eed85f41 
-7-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3259a3d0-d18a-4db5-aab9-ad96d1b4bdbd-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\SFML
 # environment
@@ -44,7 +44,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_6528_ATMKACAYNHAKXKGP
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19464_QEFUNGYYTDQMSCFS
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -100,7 +100,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 6528
+VSCODE_PID = 19464
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -198,8 +198,7 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-TEMP = C:\Users 
-\milan\AppData\Local\Temp
+TEMP = C:\Users\milan\AppData\Local\Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\e4bc06bbc5ff1f08bbfc4048da47a488-1.67.2-main-sock
 # default
@@ -231,9 +230,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/SFML, mtime 1653328923): 7 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/SFML, mtime 1653472778): 12 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -259,7 +258,7 @@ all: main
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 21:27:37
+#  Last modified 2022-05-25 11:59:25
 #  File has been updated.
 #  Successfully updated.
 
@@ -287,7 +286,8 @@ main: main.cpp
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/12=17%
-#  recipe to execute (from 'makefile', line 6):
+#  
+ recipe to execute (from 'makefile', line 6):
 	$(CC) main.cpp -o bin/main.exe -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -Wall -Wextra
 
 # Not a target:
@@ -311,12 +311,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 11 / storage = 79 B / avg = 7 B
-# current buf: size = 8174 B / used = 79 B / count = 11 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 122 B / avg = 7 B
+# current buf: size = 8174 B / used = 122 B / count = 16 / avg = 7 B
 
-# strcache performance: lookups = 21 / hit rate = 47%
+# strcache performance: lookups = 26 / hit rate = 38%
 # hash-table stats:
-# Load=11/8192=0%, Rehash=0, Collisions=0/21=0%
-# Finished Make data base on Tue May 24 21:27:51 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/26=0%
+# Finished Make data base on Wed May 25 12:01:06 2022
 
  
