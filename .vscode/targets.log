@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 25 13:16:43 2022
+# Make data base, printed on Wed May 25 17:09:10 2022
 
 # Variables
 
@@ -27,9 +27,9 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3259a3d0-d18a-4db5-aab9-ad96d1b4bdbd-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-28a9ee8b-657c-49a3-9d97-f61edd83c052-sock
 # environment
-VSCODE_CWD = C:\Users\milan\Desktop\graphics\SFML
+VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19464_QEFUNGYYTDQMSCFS
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10808_FDUDWGPTFASAQQKU
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -77,7 +77,7 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\milan\OneDrive
 # makefile
-CURDIR := c:/Users/milan/Desktop/graphics/SFML
+CURDIR := c:/Users/milan/Desktop/graphics/gravity
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 19464
+VSCODE_PID = 10808
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -135,8 +135,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program  
-Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
 # environment
 COMPUTERNAME = MEDION-ERAZER-X
 # default
@@ -232,7 +231,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/SFML, mtime 1653477398): 11 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653477437): 11 files, no impossibilities.
 
 # 11 files, no impossibilities in 1 directories.
 
@@ -318,6 +317,6 @@ SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
 # strcache performance: lookups = 29 / hit rate = 41%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Wed May 25 13:16:43 2022
+# Finished Make data base on Wed May 25 17:09:10 2022
 
  
