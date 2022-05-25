@@ -1,6 +1,13 @@
 CC = g++
 
-all: main
+output: main.o SpaceObject.o 
+	g++ main.o SpaceObject.o -o bin/main.exe -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
+	del *.o
+	
 
-main: main.cpp
-	$(CC) main.cpp -o bin/main.exe -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -Wall -Wextra
+main.o: main.cpp
+	g++ -c main.cpp
+
+SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
+	g++ -c SpaceObject.cpp
+	

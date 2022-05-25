@@ -1,13 +1,14 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for Windows32
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Wed May 25 12:01:06 2022
+# Make data base, printed on Wed May 25 13:16:43 2022
 
 # Variables
 
@@ -134,7 +135,8 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program  
+Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
 # environment
 COMPUTERNAME = MEDION-ERAZER-X
 # default
@@ -172,7 +174,7 @@ GNUMAKEFLAGS :=
 # environment
 OS = Windows_NT
 # makefile
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := output
 # default
 MAKE_VERSION := 4.3
 # environment
@@ -222,7 +224,7 @@ CHOCOLATEYTOOLSLOCATION = C:\tools
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=11/136=8%
+# Load=105/1024=10%, Rehash=0, Collisions=11/132=8%
 
 # Pattern-specific Variable Values
 
@@ -230,9 +232,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/SFML, mtime 1653472778): 12 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/SFML, mtime 1653477398): 11 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -246,77 +248,76 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 #  Modification time never checked.
 #  File has not been updated.
 
-all: main
+output: main.o SpaceObject.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 4):
+	g++ main.o SpaceObject.o -o bin/main.exe -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
+	del *.o
+	
+
+# Not a target:
+all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  File has not been updated.
 
 # Not a target:
 main.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-25 11:59:25
-#  File has been updated.
-#  Successfully updated.
-
-main: main.cpp
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := main
-# automatic
-# * := 
-# automatic
-# < := main.cpp
-# automatic
-# + := main.cpp
-# automatic
-# % := 
-# automatic
-# ^ := main.cpp
-# automatic
-# ? := main.cpp
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/12=17%
-#  
- recipe to execute (from 'makefile', line 6):
-	$(CC) main.cpp -o bin/main.exe -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -Wall -Wextra
-
-# Not a target:
-makefile:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-24 21:27:51
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+main.o: main.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 9):
+	g++ -c main.cpp
+
+# Not a target:
+SpaceObject.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+SpaceObject.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 13:16:36
+#  File has been updated.
+#  Successfully updated.
+
+SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 12):
+	g++ -c SpaceObject.cpp
+	
+
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/21=0%
+# Load=10/1024=1%, Rehash=0, Collisions=0/27=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 122 B / avg = 7 B
-# current buf: size = 8174 B / used = 122 B / count = 16 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 143 B / avg = 8 B
+# current buf: size = 8174 B / used = 143 B / count = 17 / avg = 8 B
 
-# strcache performance: lookups = 26 / hit rate = 38%
+# strcache performance: lookups = 29 / hit rate = 41%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/26=0%
-# Finished Make data base on Wed May 25 12:01:06 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/29=0%
+# Finished Make data base on Wed May 25 13:16:43 2022
 
  
