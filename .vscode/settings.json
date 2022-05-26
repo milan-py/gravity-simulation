@@ -48,7 +48,8 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp",
-		"xiosbase": "cpp"
+		"xiosbase": "cpp",
+		"cstring": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

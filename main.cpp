@@ -2,6 +2,8 @@
 #include <fstream>
 #include <SFML/Graphics.hpp>
 #include "SpaceObject.hpp"
+#include "imgui.h"
+#include "imgui-SFML.h"
 
 constexpr float FACTOR = 0.00005f;
 
@@ -27,12 +29,15 @@ int main(const int argc, const char** argv){
     #endif
 
     auto [width, height] = getWindowSize(argc, argv);
-
-    std::cout << "argc: " << argc << '\n';
     
     std::cout << "\e[?25l" << '\n'; //cursor off
 
     sf::RenderWindow window(sf::VideoMode(width, height), "lol", sf::Style::Titlebar | sf::Style::Close);
+    window.setFramerateLimit(60);
+    if(!ImGui::SFML::Init(window)){
+        std::cout << "imgui failed!" << '\n';
+        return EXIT_FAILURE;
+    }
 
     sf::Event event;
     sf::Clock deltaClock;
@@ -40,21 +45,21 @@ int main(const int argc, const char** argv){
     float passedTime = 0;
 
     SpaceObject earth{sf::Vector2f(absolutePos(750), absolutePos(500)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
-    SpaceObject human{sf::Vector2f(absolutePos(750) + 1000000, absolutePos(500) + EARTH_RADIUS), FACTOR, 100000, sf::Color::White, 60};
+    SpaceObject human{sf::Vector2f(absolutePos(750), absolutePos(500) + EARTH_RADIUS + 100000), FACTOR, 200000, sf::Color::White, 60};
 
+    human.mvelocity.x = 7600;
 
     while(window.isOpen()){
         while (window.pollEvent(event)){
-            if(event.type == sf::Event::Closed)
+            ImGui::SFML::ProcessEvent(window, event);
+            if(event.type == sf::Event::Closed){
                 window.close();
+            }
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
             window.close();
         }
-
-        dt = deltaClock.restart().asSeconds();
-        // dt *= 100;
 
 
         human.Gvel(earth, dt);
@@ -73,11 +78,22 @@ int main(const int argc, const char** argv){
         // std::cout << "time passed: " << passedTime << '\r';
         std::cout << human << " time passed: " << passedTime << '\n';
         
+
+        
+        ImGui::SFML::Update(window, deltaClock.restart());
+        dt = deltaClock.getElapsedTime().asSeconds();
+        dt *= 1000;
         passedTime += dt;
+        ImGui::ShowDemoWindow();
+
+        ImGui::Begin("Hello, earth!");
+        ImGui::Button("Look at this pretty button");
+        ImGui::End();
 
         window.clear(sf::Color::Black);
         window.draw(earth);
         window.draw(human);
+        ImGui::SFML::Render(window);
         window.display();
     }
 

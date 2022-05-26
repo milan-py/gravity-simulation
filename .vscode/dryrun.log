@@ -1,9 +1,5 @@
-make.exe --dry-run --always-make --keep-going --print-directory
+make.exe --dry-run --keep-going --print-directory
 make: Entering directory 'c:/Users/milan/Desktop/graphics/gravity'
-g++ -c main.cpp -std=c++17
- 
-g++ -c SpaceObject.cpp -std=c++17
-g++ main.o SpaceObject.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
-del *.o
+g++ main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 
 make: Leaving directory 'c:/Users/milan/Desktop/graphics/gravity'
  

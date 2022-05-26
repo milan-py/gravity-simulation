@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 19:00:07 2022
+# Make data base, printed on Thu May 26 19:08:47 2022
 
 # Variables
 
@@ -135,7 +135,8 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Pr 
+ogram Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
 # environment
 COMPUTERNAME = MEDION-ERAZER-X
 # default
@@ -181,8 +182,7 @@ PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = MEDION-ERAZER-X
 # environment
-NUM 
-BER_OF_PROCESSORS = 12
+NUMBER_OF_PROCESSORS = 12
 # environment
 PUBLIC = C:\Users\Public
 # environment
@@ -232,9 +232,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653494995): 11 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653584831): 23 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -242,19 +242,76 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Files
 
+imgui_widgets.o: lib\imgui_widgets.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 15):
+	g++ lib\imgui_widgets.cpp -c -I include/ 
+
+imgui_tables.o: lib\imgui_tables.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 19):
+	g++ lib\imgui_tables.cpp -c -I include/ 
+
+imgui-SFML.o: lib\imgui-SFML.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 21):
+	g++ lib\imgui-SFML.cpp -c -I include/ 
+
+# Not a target:
+lib\imgui.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib\imgui_tables.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+imgui.o: lib\imgui.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 17):
+	g++ lib\imgui.cpp -c -I include/
+
+# Not a target:
+lib\imgui_widgets.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib\imgui-SFML.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-output: main.o SpaceObject.o
+# Not a target:
+lib\imgui_demo.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+output: main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 4):
-	g++ main.o SpaceObject.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
-	del *.o
+	g++ main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 
 	
 
 # Not a target:
@@ -263,6 +320,13 @@ all:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
+
+imgui_draw.o: lib\imgui_draw.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 13):
+	g++ lib\imgui_draw.cpp -c -I include/ 
 
 # Not a target:
 main.cpp:
@@ -274,10 +338,11 @@ main.o: main.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 9):
-	g++ -c main.cpp -std=c++17
+#  recipe to execute (from 'makefile', line 8):
+	g++ -c main.cpp -std=c++17 -I include/
 
-# Not a target:
+# Not a ta 
+rget:
 SpaceObject.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -292,7 +357,7 @@ SpaceObject.hpp:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 17:49:46
+#  Last modified 2022-05-26 19:06:12
 #  File has been updated.
 #  Successfully updated.
 
@@ -300,24 +365,36 @@ SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 12):
-	g++ -c SpaceObject.cpp -std=c++17
-	
+#  recipe to execute (from 'makefile', line 10):
+	g++ -c SpaceObject.cpp -std=c++17 -I include/
+
+imgui_demo.o: lib\imgui_demo.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 23):
+	g++ lib\imgui_demo.cpp -c -I include/ 
+
+# Not a target:
+lib\imgui_draw.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/57=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 143 B / avg = 8 B
-# current buf: size = 8174 B / used = 143 B / count = 17 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 368 B / avg = 11 B
+# current buf: size = 8174 B / used = 368 B / count = 33 / avg = 11 B
 
-# strcache performance: lookups = 29 / hit rate = 41%
+# strcache performance: lookups = 65 / hit rate = 49%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Thu May 26 19:00:07 2022
+# Load=33/8192=0%, Rehash=0, Collisions=0/65=0%
+# Finished Make data base on Thu May 26 19:08:47 2022
 
  
