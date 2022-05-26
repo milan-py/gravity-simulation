@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 23:59:01 2022
+# Make data base, printed on Fri May 27 00:12:24 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a2edab23-bd98-4d4a-8195-847b1d16f664-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-aafe2c2d-c7b3-4986-b1a3-fe4dfe5bbf42-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10172_CXYDNBBRUKEHXGJZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22108_NGMJRZJKHTTTOMHD
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 10172
+VSCODE_PID = 22108
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -199,8 +199,7 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-TEMP 
- = C:\Users\milan\AppData\Local\Temp
+TEMP = C:\Users\milan\AppData\Local\Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\e4bc06bbc5ff1f08bbfc4048da47a488-1.67.2-main-sock
 # default
@@ -232,9 +231,10 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653602263): 24 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653603039): 24 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories. 
+
 
 # Implicit Rules
 
@@ -311,7 +311,7 @@ output: main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 4):
-	g++ main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 
+	g++ main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 -static
 	
 
 # Not a target:
@@ -356,7 +356,7 @@ SpaceObject.hpp:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 19:06:12
+#  Last modified 2022-05-27 00:10:30
 #  File has been updated.
 #  Successfully updated.
 
@@ -394,6 +394,6 @@ lib\imgui_draw.cpp:
 # strcache performance: lookups = 66 / hit rate = 48%
 # hash-table stats:
 # Load=34/8192=0%, Rehash=0, Collisions=0/66=0%
-# Finished Make data base on Thu May 26 23:59:01 2022
+# Finished Make data base on Fri May 27 00:12:24 2022
 
  

@@ -49,7 +49,16 @@
 		"streambuf": "cpp",
 		"typeinfo": "cpp",
 		"xiosbase": "cpp",
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"bit": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"xfacet": "cpp",
+		"xlocale": "cpp",
+		"xlocinfo": "cpp",
+		"xlocnum": "cpp",
+		"xstddef": "cpp",
+		"xtr1common": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

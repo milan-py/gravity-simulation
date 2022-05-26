@@ -96,7 +96,7 @@ bool SpaceObject::window(const char* name){
         static float mposarr[2];
         mposarr[0] = getMPosition().x;
         mposarr[1] = getMPosition().y;
-        ImGui::DragFloat2("mposition", mposarr);
+        ImGui::DragFloat2("mposition", mposarr, 500);
         setMPosition(sf::Vector2f(mposarr[0], mposarr[1]));
 
         ImGui::DragFloat("mass", &mass);
@@ -106,6 +106,10 @@ bool SpaceObject::window(const char* name){
         ImGui::DragFloat2("velocity", mvelarr);
         mvelocity.x = mvelarr[0];
         mvelocity.y = mvelarr[1];
+
+        if(ImGui::Button("close")){
+            showWindow = false;
+        }
         
     ImGui::End();   
     return true;

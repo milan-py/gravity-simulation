@@ -104,19 +104,9 @@ struct WindowSize getWindowSize(const int argc, const char** argv){
 
     struct WindowSize size = {0, 0};
 
-    if(argc != 3){
-        std::cout << "width: ";
-        std::cin >> size.width;
-        if(std::cin.fail()){
-            std::cout << "Input failed" << '\n';
-            exit(EXIT_FAILURE);
-        }
-        std::cout << "height: ";
-        std::cin >> size.height;
-        if(std::cin.fail()){
-            std::cout << "Input failed" << '\n';
-            exit(EXIT_FAILURE);
-        }
+    if(argc < 3){
+        size.width = 1500;
+        size.height = 1000;
     }
     else{
         size.width = std::atoi(argv[1]);
