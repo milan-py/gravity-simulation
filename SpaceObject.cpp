@@ -2,7 +2,8 @@
 #include <iostream>
 #include <cmath>
 #include "SpaceObject.hpp"
-
+#include "imgui.h"
+#include "imgui-SFML.h"
 
 SpaceObject::SpaceObject(sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor} {
     setMPosition(mposition);
@@ -13,8 +14,7 @@ SpaceObject::SpaceObject(sf::Vector2f mposition, const float factor, float radiu
 void SpaceObject::moveMVel(float dt){
     moveM(mvelocity, dt);
 }
-        
-
+    
 sf::Vector2f SpaceObject::getMPosition(){
 	return sf::Vector2f(getPosition().x/m_to_px_factor + getMRadius(), getPosition().y/m_to_px_factor + getMRadius());
 }
@@ -83,7 +83,85 @@ void SpaceObject::Gvel(SpaceObject &other, float dt){
     mvelocity += velvec;
 }
 
+bool SpaceObject::window(const char* name){
 
+    if(!showWindow){
+        return true;
+    }
+    if(!ImGui::Begin(name)){
+        ImGui::End();   
+        return false;
+    }
+
+        static float mposarr[2];
+        mposarr[0] = getMPosition().x;
+        mposarr[1] = getMPosition().y;
+        ImGui::DragFloat2("mposition", mposarr);
+        setMPosition(sf::Vector2f(mposarr[0], mposarr[1]));
+
+        ImGui::DragFloat("mass", &mass);
+        static float mvelarr[2];
+        mvelarr[0] = mvelocity.x;
+        mvelarr[1] = mvelocity.y;
+        ImGui::DragFloat2("velocity", mvelarr);
+        mvelocity.x = mvelarr[0];
+        mvelocity.y = mvelarr[1];
+        
+    ImGui::End();   
+    return true;
+}
+
+bool SpaceObject::ispressed(const sf::RenderWindow& window){
+    ImGuiIO& io = ImGui::GetIO();
+    if(io.WantCaptureMouse){
+        return false;
+    }
+
+    sf::Vector2f pxpos = getPosition();
+    pxpos.x += getRadius(); 
+    pxpos.y += getRadius(); 
+    sf::Vector2i mousepos = sf::Mouse::getPosition(window);
+
+    pxpos.x = pxpos.x - mousepos.x;
+    pxpos.y = pxpos.y - mousepos.y;
+
+    bool pressednow = false;
+    static bool pressedprevious = false;
+
+    if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
+        pressedprevious = false;
+        return false;
+    }
+    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < getRadius()){ // Pythagoras
+        pressednow = true;
+        if(pressedprevious){
+            pressednow = false;
+        }
+        pressedprevious = true;
+    }
+    return pressednow;
+}
+
+bool SpaceObject::ismouseon(const sf::RenderWindow& window){
+    ImGuiIO& io = ImGui::GetIO();
+    if(io.WantCaptureMouse){
+        return false;
+    }
+
+    sf::Vector2f pxpos = getPosition();
+    pxpos.x += getRadius(); 
+    pxpos.y += getRadius(); 
+    sf::Vector2i mousepos = sf::Mouse::getPosition(window);
+
+    pxpos.x = pxpos.x - mousepos.x;
+    pxpos.y = pxpos.y - mousepos.y;
+
+    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < getRadius()){ // Pythagoras
+        return true;
+    }
+
+    return false;
+}
 
 void SpaceObject::moveM(sf::Vector2f vector, float dt){
     move(sf::Vector2f(vector.x * m_to_px_factor * dt, vector.y * m_to_px_factor * dt));

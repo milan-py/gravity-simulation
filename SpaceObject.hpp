@@ -31,13 +31,20 @@ class SpaceObject : public sf::CircleShape{
         void Gvel(SpaceObject &other, float dt = 1);
 
 		friend std::ostream& operator<<(std::ostream& os, const SpaceObject& obj);
+
+        bool window(const char* name); // shows an imgui window if showWindow is true returns thing from imgui
+
+        bool ispressed(const sf::RenderWindow& window); // checks if mouse pressed object
+        bool ismouseon(const sf::RenderWindow& window); // checks if mouse is over object on and left key is pressed
         
         float mass;
         sf::Vector2f mvelocity{0, 0};
 		const float m_to_px_factor;
+        bool showWindow = false;
 
 	private:
         void moveM(sf::Vector2f vector, float dt = 1);
+        
 };
 
 std::ostream& operator<<(std::ostream& os, SpaceObject& obj);

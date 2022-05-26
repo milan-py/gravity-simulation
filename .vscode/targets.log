@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 19:08:47 2022
+# Make data base, printed on Thu May 26 23:59:01 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2301dfff-25eb-4efd-9abc-c38469de3860-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a2edab23-bd98-4d4a-8195-847b1d16f664-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11024_ICTGYUUIXVFYVQIY
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10172_CXYDNBBRUKEHXGJZ
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 11024
+VSCODE_PID = 10172
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -135,8 +135,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Pr 
-ogram Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Windows\Microsoft.NET\Framework64\v2.0.50727;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;D:\Program Files\Git\cmd;C:\emsdk;C:\emsdk\node\14.18.2_64bit\bin;C:\emsdk\upstream\emscripten;C:\Users\milan\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\milan\AppData\Local\Programs\Python\Python39\;C:\Users\milan\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin;;C:\Users\milan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\milan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\milan\Desktop\Ccode\compiler;C:\mingw32\bin;C:\Program Files (x86)\Atmel\Flip 3.4.7\bin;C:\Users\milan\AppData\Roaming\npm;C:\Program Files\PostgreSQL\9.5\bin\;C:\Users\milan\Documents\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Program Files (x86)\Lua\5.1;C:\lua-5.4.2_Win64_bin;
 # environment
 COMPUTERNAME = MEDION-ERAZER-X
 # default
@@ -200,7 +199,8 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-TEMP = C:\Users\milan\AppData\Local\Temp
+TEMP 
+ = C:\Users\milan\AppData\Local\Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\e4bc06bbc5ff1f08bbfc4048da47a488-1.67.2-main-sock
 # default
@@ -232,9 +232,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653584831): 23 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653602263): 24 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -341,8 +341,7 @@ main.o: main.cpp
 #  recipe to execute (from 'makefile', line 8):
 	g++ -c main.cpp -std=c++17 -I include/
 
-# Not a ta 
-rget:
+# Not a target:
 SpaceObject.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -389,12 +388,12 @@ lib\imgui_draw.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 368 B / avg = 11 B
-# current buf: size = 8174 B / used = 368 B / count = 33 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 378 B / avg = 11 B
+# current buf: size = 8174 B / used = 378 B / count = 34 / avg = 11 B
 
-# strcache performance: lookups = 65 / hit rate = 49%
+# strcache performance: lookups = 66 / hit rate = 48%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=0/65=0%
-# Finished Make data base on Thu May 26 19:08:47 2022
+# Load=34/8192=0%, Rehash=0, Collisions=0/66=0%
+# Finished Make data base on Thu May 26 23:59:01 2022
 
  

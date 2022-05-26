@@ -40,6 +40,7 @@ int main(const int argc, const char** argv){
     }
 
     sf::Event event;
+    sf::Clock imguiClock;
     sf::Clock deltaClock;
     float dt;
     float passedTime = 0;
@@ -49,18 +50,14 @@ int main(const int argc, const char** argv){
 
     human.mvelocity.x = 7600;
 
+
     while(window.isOpen()){
-        while (window.pollEvent(event)){
+        while(window.pollEvent(event)){
             ImGui::SFML::ProcessEvent(window, event);
-            if(event.type == sf::Event::Closed){
+            if(event.type == sf::Event::Closed or event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape){
                 window.close();
             }
         }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-            window.close();
-        }
-
 
         human.Gvel(earth, dt);
         earth.Gvel(human, dt);
@@ -74,21 +71,22 @@ int main(const int argc, const char** argv){
                 logClock.restart();
             }
         #endif
-
-        // std::cout << "time passed: " << passedTime << '\r';
-        std::cout << human << " time passed: " << passedTime << '\n';
         
-
         
-        ImGui::SFML::Update(window, deltaClock.restart());
-        dt = deltaClock.getElapsedTime().asSeconds();
+        ImGui::SFML::Update(window, imguiClock.restart());
+        dt = deltaClock.restart().asSeconds();
+        std::cout << "deltatime: " << dt << " estimated fps: " << 1/dt << '\r';
         dt *= 1000;
         passedTime += dt;
-        ImGui::ShowDemoWindow();
-
-        ImGui::Begin("Hello, earth!");
-        ImGui::Button("Look at this pretty button");
-        ImGui::End();
+        
+        if(earth.ispressed(window)){
+            earth.showWindow = !earth.showWindow;
+        }
+        if(human.ispressed(window)){
+            human.showWindow = !human.showWindow;
+        }
+        earth.window("earth");
+        human.window("human");
 
         window.clear(sf::Color::Black);
         window.draw(earth);
