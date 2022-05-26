@@ -90,6 +90,6 @@ void SpaceObject::moveM(sf::Vector2f vector, float dt){
 }
 
 std::ostream& operator<<(std::ostream& os, SpaceObject& obj){
-    os << "SpaceObject(mposition = (" << obj.getMPosition().x << ", " << obj.getMPosition().y << "), position = (" << obj.getPosition().x << ", " << obj.getPosition().y << "), mvelocity = (" << obj.mvelocity.x << ", " << obj.mvelocity.y << ") , mass = " << obj.mass << ")"; 
+    os << "SpaceObject(mposition = (" << obj.getMPosition().x << ", " << obj.getMPosition().y << "), position = (" << obj.getPosition().x << ", " << obj.getPosition().y << "), mvelocity = (" << obj.mvelocity.x << ", " << obj.mvelocity.y << "), mass = " << obj.mass << ")"; 
     return os;
 }

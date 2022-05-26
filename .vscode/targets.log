@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 25 17:09:10 2022
+# Make data base, printed on Thu May 26 19:00:07 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-28a9ee8b-657c-49a3-9d97-f61edd83c052-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2301dfff-25eb-4efd-9abc-c38469de3860-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10808_FDUDWGPTFASAQQKU
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11024_ICTGYUUIXVFYVQIY
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 10808
+VSCODE_PID = 11024
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -181,7 +181,8 @@ PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = MEDION-ERAZER-X
 # environment
-NUMBER_OF_PROCESSORS = 12
+NUM 
+BER_OF_PROCESSORS = 12
 # environment
 PUBLIC = C:\Users\Public
 # environment
@@ -231,7 +232,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653477437): 11 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653494995): 11 files, no impossibilities.
 
 # 11 files, no impossibilities in 1 directories.
 
@@ -252,7 +253,7 @@ output: main.o SpaceObject.o
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 4):
-	g++ main.o SpaceObject.o -o bin/main.exe -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
+	g++ main.o SpaceObject.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
 	del *.o
 	
 
@@ -274,7 +275,7 @@ main.o: main.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 9):
-	g++ -c main.cpp
+	g++ -c main.cpp -std=c++17
 
 # Not a target:
 SpaceObject.cpp:
@@ -291,7 +292,7 @@ SpaceObject.hpp:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 13:16:36
+#  Last modified 2022-05-25 17:49:46
 #  File has been updated.
 #  Successfully updated.
 
@@ -300,7 +301,7 @@ SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 12):
-	g++ -c SpaceObject.cpp
+	g++ -c SpaceObject.cpp -std=c++17
 	
 
 # files hash-table stats:
@@ -317,6 +318,6 @@ SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
 # strcache performance: lookups = 29 / hit rate = 41%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Wed May 25 17:09:10 2022
+# Finished Make data base on Thu May 26 19:00:07 2022
 
  
