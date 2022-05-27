@@ -1,9 +1,9 @@
 #ifndef SPACEOBJECT_HPP
-
 #define SPACEOBJECT_HPP
 
+#include <imgui.h>
+
 constexpr float GRAVITATIONAL_CONSTANT = 6.67408e-11;
-#define isNegative(x) ((x) < 0)
 
 class SpaceObject : public sf::CircleShape{
     public: 
@@ -44,6 +44,8 @@ class SpaceObject : public sf::CircleShape{
 
 	private:
         void moveM(sf::Vector2f vector, float dt = 1);
+
+        ImFont* font;
         
 };
 

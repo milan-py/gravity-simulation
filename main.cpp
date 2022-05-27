@@ -15,7 +15,7 @@ constexpr float EARTH_RADIUS = 6371000;
 struct WindowSize{
     int width, height;
 };
-struct WindowSize getWindowSize(const int argc, const char** argv);
+struct WindowSize readWindowSize(const int argc, const char** argv);
 
 int main(const int argc, const char** argv){
     #ifdef logData
@@ -28,28 +28,31 @@ int main(const int argc, const char** argv){
         int dataIndex = 0;
     #endif
 
-    auto [width, height] = getWindowSize(argc, argv);
+    auto [width, height] = readWindowSize(argc, argv);
     
     std::cout << "\e[?25l" << '\n'; //cursor off
 
-    sf::RenderWindow window(sf::VideoMode(width, height), "lol", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(width, height), "lol", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
     window.setFramerateLimit(60);
     if(!ImGui::SFML::Init(window)){
         std::cout << "imgui failed!" << '\n';
         return EXIT_FAILURE;
     }
+    sf::Vector2i viewpos{0, 0};
+    sf::View view = window.getDefaultView();
 
     sf::Event event;
     sf::Clock imguiClock;
     sf::Clock deltaClock;
     float dt;
     float passedTime = 0;
+    float timeFactor = 1;
+
 
     SpaceObject earth{sf::Vector2f(absolutePos(750), absolutePos(500)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
     SpaceObject human{sf::Vector2f(absolutePos(750), absolutePos(500) + EARTH_RADIUS + 100000), FACTOR, 200000, sf::Color::White, 60};
 
     human.mvelocity.x = 7600;
-
 
     while(window.isOpen()){
         while(window.pollEvent(event)){
@@ -57,7 +60,19 @@ int main(const int argc, const char** argv){
             if(event.type == sf::Event::Closed or event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape){
                 window.close();
             }
+            if(event.type == sf::Event::Resized){
+                view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
+            }
+
+            // TODO make mouse dragging in world work
+            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Up){}
+            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Left){viewpos.x++;
+                std::cout << viewpos.x << '\n';
+            }
+            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Down){}
+            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Right){}
         }
+        
 
         human.Gvel(earth, dt);
         earth.Gvel(human, dt);
@@ -75,8 +90,24 @@ int main(const int argc, const char** argv){
         
         ImGui::SFML::Update(window, imguiClock.restart());
         dt = deltaClock.restart().asSeconds();
-        std::cout << "deltatime: " << dt << " estimated fps: " << 1/dt << '\r';
-        dt *= 1000;
+        //imgui menu bar 
+        if(ImGui::BeginMainMenuBar()){
+            if(ImGui::BeginMenu("file")){
+                if(ImGui::MenuItem("close window", "ctrl + esc")){
+                    window.close();
+                }
+                ImGui::EndMenu();
+            }
+            ImGui::Separator();
+            ImGui::Text("seconds passed: %.3f", passedTime);
+            ImGui::SliderFloat("", &timeFactor, 0, 10000, "%.2f");
+            if(ImGui::Button("1x")){
+                timeFactor = 1;
+            }
+            ImGui::Text("time factor");
+            ImGui::EndMainMenuBar();
+        }
+        dt *= timeFactor;
         passedTime += dt;
         
         if(earth.ispressed(window)){
@@ -88,11 +119,16 @@ int main(const int argc, const char** argv){
         earth.window("earth");
         human.window("human");
 
+        
+
+
+        // SFML screen update
         window.clear(sf::Color::Black);
         window.draw(earth);
         window.draw(human);
         ImGui::SFML::Render(window);
         window.display();
+        window.setView(view);
     }
 
 
@@ -100,7 +136,7 @@ int main(const int argc, const char** argv){
     return EXIT_SUCCESS;
 }
 
-struct WindowSize getWindowSize(const int argc, const char** argv){
+struct WindowSize readWindowSize(const int argc, const char** argv){
 
     struct WindowSize size = {0, 0};
 

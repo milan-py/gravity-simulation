@@ -1,2 +1,5 @@
 *.o
 imgui.ini
+targets.log
+dryrun.log
+configurationCache.log

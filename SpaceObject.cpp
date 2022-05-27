@@ -5,6 +5,8 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
+#define isNegative(x) ((x) < 0)
+
 SpaceObject::SpaceObject(sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor} {
     setMPosition(mposition);
     setFillColor(color);
@@ -85,19 +87,24 @@ void SpaceObject::Gvel(SpaceObject &other, float dt){
 
 bool SpaceObject::window(const char* name){
 
+    
     if(!showWindow){
-        return true;
+        return false;
     }
     if(!ImGui::Begin(name)){
         ImGui::End();   
         return false;
     }
-
+        if(ImGui::BeginMenuBar()){
+            ImGui::Button("close");
+            ImGui::EndMenuBar();
+        }
         static float mposarr[2];
         mposarr[0] = getMPosition().x;
         mposarr[1] = getMPosition().y;
         ImGui::DragFloat2("mposition", mposarr, 500);
         setMPosition(sf::Vector2f(mposarr[0], mposarr[1]));
+        
 
         ImGui::DragFloat("mass", &mass);
         static float mvelarr[2];
