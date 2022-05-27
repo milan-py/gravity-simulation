@@ -7,7 +7,7 @@ constexpr float GRAVITATIONAL_CONSTANT = 6.67408e-11;
 
 class SpaceObject : public sf::CircleShape{
     public: 
-        SpaceObject(const char* name, sf::Vector2f mposition = sf::Vector2f(0.0f, 0.0f), const float factor = 1, float radius = 50.0f, sf::Color color = sf::Color::White, float mass = 100);
+        SpaceObject(std::string name, sf::Vector2f mposition = sf::Vector2f(0.0f, 0.0f), const float factor = 1, float radius = 50.0f, sf::Color color = sf::Color::White, float mass = 100);
 
         // the functions with M should be used to scale everything on the screen
         void moveMVel(float dt = 1);
@@ -42,7 +42,7 @@ class SpaceObject : public sf::CircleShape{
         sf::Vector2f mvelocity{0, 0};
 		const float m_to_px_factor;
         bool showWindow = false;
-        const char* name;
+        std::string& name;
 
 	private:
         void moveM(sf::Vector2f vector, float dt = 1);

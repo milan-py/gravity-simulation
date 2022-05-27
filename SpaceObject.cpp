@@ -7,7 +7,7 @@
 
 #define isNegative(x) ((x) < 0)
 
-SpaceObject::SpaceObject(const char* name, sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor}, name{name} {
+SpaceObject::SpaceObject(std::string name, sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor}, name{name} {
     setMPosition(mposition);
     setFillColor(color);
 }
@@ -91,7 +91,8 @@ bool SpaceObject::window(){
     if(!showWindow){
         return false;
     }
-    if(!ImGui::Begin(name)){
+    ImGui::SetNextWindowSize(ImVec2(500, 600), ImGuiCond_FirstUseEver);
+    if(!ImGui::Begin(name.c_str(), &showWindow)){
         ImGui::End();   
         return false;
     }

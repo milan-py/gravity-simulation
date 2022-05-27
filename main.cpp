@@ -17,18 +17,11 @@ struct WindowSize{
 };
 struct WindowSize readWindowSize(const int argc, const char** argv);
 void UpdateCameraVelocity(sf::Vector2f &cameraVelocity);
+SpaceObject createSpaceObject();
+bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name);
 
 
 int main(const int argc, const char** argv){
-    #ifdef logData
-        std::ofstream file{"data.csv", std::ios::out};
-        if(file.fail()){
-	    	std::cout << "Log file failed to open\n";
-            return EXIT_FAILURE;
-	    }
-        file << "mvelX,mvelY,posX,posY,distance,i\n";
-        int dataIndex = 0;
-    #endif
 
     auto [width, height] = readWindowSize(argc, argv);
     
@@ -40,6 +33,11 @@ int main(const int argc, const char** argv){
         std::cout << "imgui failed!" << '\n';
         return EXIT_FAILURE;
     }
+    ImGuiIO& io = ImGui::GetIO();
+    io.FontGlobalScale = 1.6f;
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.0f);
+    
 
     sf::Vector2i viewpos{0, 0};
     sf::View view = window.getDefaultView();
@@ -51,14 +49,14 @@ int main(const int argc, const char** argv){
     float passedTime = 0;
     float timeFactor = 1;
 
+    bool createOpened = false;
+    char nameBuf[100];
+    char errorMsgBuf[100];
+    
+
     sf::Vector2f cameraVelocity{0, 0};
 
-    std::vector<SpaceObject> spaceObjects{
-        SpaceObject("earth1", sf::Vector2(absolutePos(width/2)+EARTH_RADIUS*2, absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS),
-        SpaceObject("earth2", sf::Vector2(absolutePos(width/2), absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS),
-    };
-
-    // human.mvelocity.x = 7600;
+    std::vector<SpaceObject> spaceObjects{};
 
     while(window.isOpen()){ // main loop
         while(window.pollEvent(event)){
@@ -69,16 +67,14 @@ int main(const int argc, const char** argv){
             if(event.type == sf::Event::Resized){
                 view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
             }
-            
         }
-        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::N) and sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+            createOpened = true;
+        }
 
-        std::cout << "x: " << cameraVelocity.x << " y: " << cameraVelocity.y << '\n';
+
         UpdateCameraVelocity(cameraVelocity);
         view.move(cameraVelocity);
-
-        /*human.Gvel(earth, dt);
-        earth.Gvel(human, dt);*/
 
 
         for(SpaceObject &i: spaceObjects){
@@ -89,13 +85,6 @@ int main(const int argc, const char** argv){
                 }
             }
         }
-
-        #ifdef logData
-            if(logClock.getElapsedTime().asSeconds() > 0.1){
-                file << planet2.mvelocity.x << ',' << planet2.mvelocity.y << ',' << planet2.getMPosition().x << ',' << planet2.getMPosition().y << ',' << planet2.distance(planet1) << ',' << dataIndex++ <<'\n';
-                logClock.restart();
-            }
-        #endif
         
         
         ImGui::SFML::Update(window, imguiClock.restart());
@@ -104,9 +93,10 @@ int main(const int argc, const char** argv){
         //imgui menu bar 
         if(ImGui::BeginMainMenuBar()){
             if(ImGui::BeginMenu("file")){
-                if(ImGui::MenuItem("close window", "ctrl + esc")){
+                if(ImGui::MenuItem("close window", "esc")){
                     window.close();
                 }
+                ImGui::MenuItem("create planet", "ctrl + n", &createOpened);
                 ImGui::EndMenu();
             }
             ImGui::Separator();
@@ -118,6 +108,29 @@ int main(const int argc, const char** argv){
             ImGui::Text("time factor");
             ImGui::EndMainMenuBar();
         }
+        if(createOpened){
+            ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
+            ImGui::Begin("create planet", &createOpened);
+                ImGui::InputText("name", nameBuf, 100);
+                
+                if(ImGui::Button("create")){
+                    if(nameBuf[0] == '\0'){
+                        strncpy_s(errorMsgBuf, "must provide a name", 100);
+                    }
+                    else if(spaceobjname(spaceObjects, nameBuf)){
+                        strncpy_s(errorMsgBuf, "name already exists", 100);
+                    }
+                    else{
+                        spaceObjects.push_back(SpaceObject(nameBuf, sf::Vector2f(absolutePos(width/2), absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS));
+                        errorMsgBuf[0] = '\0';
+                    }
+                    
+                }
+                std::cout << errorMsgBuf << '\n';
+                ImGui::Text(errorMsgBuf); // shows an error message if a user input is invalid
+            ImGui::End();
+        }
+
         dt *= timeFactor;
         passedTime += dt;
     
@@ -131,10 +144,7 @@ int main(const int argc, const char** argv){
             window.draw(i);
         }
 
-        std::cout << spaceObjects[0] << '\n';
-
         // SFML screen update
-        
         ImGui::SFML::Render(window);
         window.display();
         window.setView(view);
@@ -152,7 +162,6 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
         if(cameraVelocity.y <= 4){
-            // std::cout << "lol";
             cameraVelocity.y += 0.1;
         }   
     }
@@ -167,7 +176,6 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
         if(cameraVelocity.y >= -4){
-            // std::cout << "lol";
             cameraVelocity.y -= 0.1;
         }   
     }
@@ -184,7 +192,6 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
         if(cameraVelocity.x <= 4){
-            // std::cout << "lol";
             cameraVelocity.x += 0.1;
         }   
     }
@@ -199,7 +206,6 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
         if(cameraVelocity.x >= -4){
-            // std::cout << "lol";
             cameraVelocity.x -= 0.1;
         }   
     }
@@ -213,7 +219,17 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     }
 }
 
+bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name){
+    for(SpaceObject& i: objects){
+        if(name == i.name){
+            return true;
+        }
+    }
+    return false;
+}
 struct WindowSize readWindowSize(const int argc, const char** argv){
+
+
 
     struct WindowSize size = {0, 0};
 
