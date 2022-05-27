@@ -53,10 +53,12 @@ int main(const int argc, const char** argv){
 
     sf::Vector2f cameraVelocity{0, 0};
 
-    SpaceObject earth{sf::Vector2f(absolutePos(750), absolutePos(500)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
-    SpaceObject human{sf::Vector2f(absolutePos(750), absolutePos(500) + EARTH_RADIUS + 100000), FACTOR, 200000, sf::Color::White, 60};
+    std::vector<SpaceObject> spaceObjects{
+        SpaceObject("earth1", sf::Vector2(absolutePos(width/2)+EARTH_RADIUS*2, absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS),
+        SpaceObject("earth2", sf::Vector2(absolutePos(width/2), absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS),
+    };
 
-    human.mvelocity.x = 7600;
+    // human.mvelocity.x = 7600;
 
     while(window.isOpen()){ // main loop
         while(window.pollEvent(event)){
@@ -75,11 +77,18 @@ int main(const int argc, const char** argv){
         UpdateCameraVelocity(cameraVelocity);
         view.move(cameraVelocity);
 
-        human.Gvel(earth, dt);
-        earth.Gvel(human, dt);
+        /*human.Gvel(earth, dt);
+        earth.Gvel(human, dt);*/
 
-        human.moveMVel(dt);
-        earth.moveMVel(dt);
+
+        for(SpaceObject &i: spaceObjects){
+            i.moveMVel(dt);
+            for(SpaceObject &j: spaceObjects){
+                if(!i.isme(j)){
+                    i.Gvel(j, dt);
+                }
+            }
+        }
 
         #ifdef logData
             if(logClock.getElapsedTime().asSeconds() > 0.1){
@@ -91,6 +100,7 @@ int main(const int argc, const char** argv){
         
         ImGui::SFML::Update(window, imguiClock.restart());
         dt = deltaClock.restart().asSeconds();
+
         //imgui menu bar 
         if(ImGui::BeginMainMenuBar()){
             if(ImGui::BeginMenu("file")){
@@ -110,23 +120,21 @@ int main(const int argc, const char** argv){
         }
         dt *= timeFactor;
         passedTime += dt;
-        
-        if(earth.ispressed(window)){
-            earth.showWindow = !earth.showWindow;
-        }
-        if(human.ispressed(window)){
-            human.showWindow = !human.showWindow;
-        }
-        earth.window("earth");
-        human.window("human");
+    
 
-        
+        window.clear(sf::Color::Black);
+        for(SpaceObject &i: spaceObjects){
+            if(i.ispressed(window)){
+                i.showWindow = !i.showWindow;
+            }
+            i.window();
+            window.draw(i);
+        }
 
+        std::cout << spaceObjects[0] << '\n';
 
         // SFML screen update
-        window.clear(sf::Color::Black);
-        window.draw(earth);
-        window.draw(human);
+        
         ImGui::SFML::Render(window);
         window.display();
         window.setView(view);

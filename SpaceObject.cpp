@@ -7,7 +7,7 @@
 
 #define isNegative(x) ((x) < 0)
 
-SpaceObject::SpaceObject(sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor} {
+SpaceObject::SpaceObject(const char* name, sf::Vector2f mposition, const float factor, float radius, sf::Color color, float mass) : sf::CircleShape{radius*factor}, mass{mass}, m_to_px_factor{factor}, name{name} {
     setMPosition(mposition);
     setFillColor(color);
 }
@@ -85,7 +85,7 @@ void SpaceObject::Gvel(SpaceObject &other, float dt){
     mvelocity += velvec;
 }
 
-bool SpaceObject::window(const char* name){
+bool SpaceObject::window(){
 
     
     if(!showWindow){
@@ -176,6 +176,10 @@ bool SpaceObject::ismouseon(const sf::RenderWindow& window){
 
 void SpaceObject::moveM(sf::Vector2f vector, float dt){
     move(sf::Vector2f(vector.x * m_to_px_factor * dt, vector.y * m_to_px_factor * dt));
+}
+
+bool SpaceObject::isme(SpaceObject& other){
+    return &other == this;
 }
 
 std::ostream& operator<<(std::ostream& os, SpaceObject& obj){
