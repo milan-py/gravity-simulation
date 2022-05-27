@@ -16,6 +16,8 @@ struct WindowSize{
     int width, height;
 };
 struct WindowSize readWindowSize(const int argc, const char** argv);
+void UpdateCameraVelocity(sf::Vector2f &cameraVelocity);
+
 
 int main(const int argc, const char** argv){
     #ifdef logData
@@ -38,6 +40,7 @@ int main(const int argc, const char** argv){
         std::cout << "imgui failed!" << '\n';
         return EXIT_FAILURE;
     }
+
     sf::Vector2i viewpos{0, 0};
     sf::View view = window.getDefaultView();
 
@@ -48,31 +51,29 @@ int main(const int argc, const char** argv){
     float passedTime = 0;
     float timeFactor = 1;
 
+    sf::Vector2f cameraVelocity{0, 0};
 
     SpaceObject earth{sf::Vector2f(absolutePos(750), absolutePos(500)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS};
     SpaceObject human{sf::Vector2f(absolutePos(750), absolutePos(500) + EARTH_RADIUS + 100000), FACTOR, 200000, sf::Color::White, 60};
 
     human.mvelocity.x = 7600;
 
-    while(window.isOpen()){
+    while(window.isOpen()){ // main loop
         while(window.pollEvent(event)){
             ImGui::SFML::ProcessEvent(window, event);
-            if(event.type == sf::Event::Closed or event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape){
+            if(event.type == sf::Event::Closed or (event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Escape)){
                 window.close();
             }
             if(event.type == sf::Event::Resized){
                 view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
             }
-
-            // TODO make mouse dragging in world work
-            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Up){}
-            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Left){viewpos.x++;
-                std::cout << viewpos.x << '\n';
-            }
-            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Down){}
-            if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Right){}
+            
         }
         
+
+        std::cout << "x: " << cameraVelocity.x << " y: " << cameraVelocity.y << '\n';
+        UpdateCameraVelocity(cameraVelocity);
+        view.move(cameraVelocity);
 
         human.Gvel(earth, dt);
         earth.Gvel(human, dt);
@@ -134,6 +135,74 @@ int main(const int argc, const char** argv){
 
     std::cout << "\e[?25h" << '\n'; //cursor on
     return EXIT_SUCCESS;
+}
+
+void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
+    
+    // handling the keyboard input for the camera movement
+    // TODO: add mouse dragging
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
+        if(cameraVelocity.y <= 4){
+            // std::cout << "lol";
+            cameraVelocity.y += 0.1;
+        }   
+    }
+    else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
+        if(cameraVelocity.y > 0){
+            cameraVelocity.y -= 0.2;
+        }
+        else{
+            cameraVelocity.y = 0;
+        }
+    } 
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
+        if(cameraVelocity.y >= -4){
+            // std::cout << "lol";
+            cameraVelocity.y -= 0.1;
+        }   
+    }
+    else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
+        if(cameraVelocity.y < 0){
+            cameraVelocity.y += 0.2;
+        }
+        else{
+            cameraVelocity.y = 0;
+        }
+    }  
+
+
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
+        if(cameraVelocity.x <= 4){
+            // std::cout << "lol";
+            cameraVelocity.x += 0.1;
+        }   
+    }
+    else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
+        if(cameraVelocity.x > 0){
+            cameraVelocity.x -= 0.2;
+        }
+        else{
+            cameraVelocity.x = 0;
+        }
+    } 
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
+        if(cameraVelocity.x >= -4){
+            // std::cout << "lol";
+            cameraVelocity.x -= 0.1;
+        }   
+    }
+    else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
+        if(cameraVelocity.x < 0){
+            cameraVelocity.x += 0.2;
+        }
+        else{
+            cameraVelocity.x = 0;
+        }
+    }
 }
 
 struct WindowSize readWindowSize(const int argc, const char** argv){
