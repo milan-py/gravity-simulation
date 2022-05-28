@@ -30,6 +30,7 @@ class SpaceObject : public sf::CircleShape{
 
         void Gvel(SpaceObject &other, float dt = 1);
 
+        std::string getName();
 		friend std::ostream& operator<<(std::ostream& os, const SpaceObject& obj);
 
         bool window(); // shows an imgui window if showWindow is true returns thing from imgui
@@ -40,13 +41,13 @@ class SpaceObject : public sf::CircleShape{
         
         float mass;
         sf::Vector2f mvelocity{0, 0};
-		const float m_to_px_factor;
+		float m_to_px_factor;
         bool showWindow = false;
-        std::string& name;
+        
 
 	private:
         void moveM(sf::Vector2f vector, float dt = 1);
-
+        const std::string name;
         ImFont* font;
         
 };

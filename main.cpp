@@ -15,17 +15,26 @@ constexpr float EARTH_RADIUS = 6371000;
 struct WindowSize{
     int width, height;
 };
+struct NewPlanet{
+    float mposition[2] = {0, 0}, mvelocity[2] = {0, 0};
+    sf::Color color{1, 1, 122, 255};
+    float mass = 1000, radius = 6371000;
+    char name[100] = {'\0'};
+    char errorMsg[100] = {'\0'};
+};
+
 struct WindowSize readWindowSize(const int argc, const char** argv);
 void UpdateCameraVelocity(sf::Vector2f &cameraVelocity);
 SpaceObject createSpaceObject();
 bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name);
+void initPrototypeValues(SpaceObject& prototype, NewPlanet& obj, int width, int height);
 
 
 int main(const int argc, const char** argv){
 
     auto [width, height] = readWindowSize(argc, argv);
     
-    std::cout << "\e[?25l" << '\n'; //cursor off
+    std::cout << "\e[?25l"; //cursor off
 
     sf::RenderWindow window(sf::VideoMode(width, height), "lol", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
     window.setFramerateLimit(60);
@@ -49,13 +58,16 @@ int main(const int argc, const char** argv){
     float passedTime = 0;
     float timeFactor = 1;
 
-    bool createOpened = false;
-    char nameBuf[100];
-    char errorMsgBuf[100];
-    
+    // for creating a new planet with the Gui
+    NewPlanet newObj;    
+    SpaceObject prototypeObj{"prototype"};
+    prototypeObj.m_to_px_factor = FACTOR;
+    prototypeObj.setFillColor(sf::Color::Transparent);
+    bool createWindowOpened = false;
 
     sf::Vector2f cameraVelocity{0, 0};
 
+    // TODO: add deleting with Gui
     std::vector<SpaceObject> spaceObjects{};
 
     while(window.isOpen()){ // main loop
@@ -69,7 +81,13 @@ int main(const int argc, const char** argv){
             }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::N) and sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
-            createOpened = true;
+            // this code is executed once when the window is opened
+            if(not createWindowOpened){
+                // this code is executed once when the create window is opened
+                initPrototypeValues(prototypeObj, newObj, width, height);
+            }
+
+            createWindowOpened = true;
         }
 
 
@@ -86,7 +104,6 @@ int main(const int argc, const char** argv){
             }
         }
         
-        
         ImGui::SFML::Update(window, imguiClock.restart());
         dt = deltaClock.restart().asSeconds();
 
@@ -96,7 +113,10 @@ int main(const int argc, const char** argv){
                 if(ImGui::MenuItem("close window", "esc")){
                     window.close();
                 }
-                ImGui::MenuItem("create planet", "ctrl + n", &createOpened);
+
+                if(ImGui::MenuItem("create planet", "ctrl + n", &createWindowOpened)){
+                    initPrototypeValues(prototypeObj, newObj, width, height);
+                }
                 ImGui::EndMenu();
             }
             ImGui::Separator();
@@ -108,27 +128,48 @@ int main(const int argc, const char** argv){
             ImGui::Text("time factor");
             ImGui::EndMainMenuBar();
         }
-        if(createOpened){
+        // Gui for creating a new planet
+        if(createWindowOpened){
             ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
-            ImGui::Begin("create planet", &createOpened);
-                ImGui::InputText("name", nameBuf, 100);
+            ImGui::Begin("create planet", &createWindowOpened);
+                ImGui::InputText("name", newObj.name, 100);
+                ImGui::InputFloat2("mposition", newObj.mposition);
+                ImGui::InputFloat2("mvelocity", newObj.mvelocity);
+                ImGui::InputFloat("mass", &newObj.mass);
+                ImGui::InputFloat("radius", &newObj.radius);
+                
                 
                 if(ImGui::Button("create")){
-                    if(nameBuf[0] == '\0'){
-                        strncpy_s(errorMsgBuf, "must provide a name", 100);
+                    if(newObj.name[0] == '\0'){
+                        strncpy_s(newObj.errorMsg, "must provide a name", 100);
                     }
-                    else if(spaceobjname(spaceObjects, nameBuf)){
-                        strncpy_s(errorMsgBuf, "name already exists", 100);
+                    else if(spaceobjname(spaceObjects, newObj.name)){
+                        strncpy_s(newObj.errorMsg, "name already exists", 100);
                     }
                     else{
-                        spaceObjects.push_back(SpaceObject(nameBuf, sf::Vector2f(absolutePos(width/2), absolutePos(height/2)), FACTOR, EARTH_RADIUS, sf::Color::Blue, EARTH_MASS));
-                        errorMsgBuf[0] = '\0';
+                        spaceObjects.push_back(SpaceObject(newObj.name, sf::Vector2f(newObj.mposition[0], newObj.mposition[1]), FACTOR, newObj.radius, newObj.color, newObj.mass));
+                        newObj.errorMsg[0] = '\0';
                     }
-                    
                 }
-                std::cout << errorMsgBuf << '\n';
-                ImGui::Text(errorMsgBuf); // shows an error message if a user input is invalid
+
+                // updating the prototype object
+                prototypeObj.setMPosition(sf::Vector2f(newObj.mposition[0], newObj.mposition[1]));
+                prototypeObj.setMRadius(newObj.radius);
+
+                ImGui::Text(newObj.errorMsg); // shows an error message if a user input is invalid
             ImGui::End();
+        }
+
+        // hides prototype object if not needed
+        if(not createWindowOpened){
+            prototypeObj.setFillColor(sf::Color::Transparent);
+        }
+        
+        // std::cout << "fill Color: " << static_cast<int>(prototypeObj.getFillColor().a) << '\n';
+
+        // std::cout << prototypeObj.getPosition().x << ", " << prototypeObj.getPosition().y << '\n';
+        for(int i = 0; i < spaceObjects.size(); ++i){
+            std::cout << spaceObjects[i] << i << '\n';
         }
 
         dt *= timeFactor;
@@ -144,6 +185,8 @@ int main(const int argc, const char** argv){
             window.draw(i);
         }
 
+        window.draw(prototypeObj);
+
         // SFML screen update
         ImGui::SFML::Render(window);
         window.display();
@@ -155,14 +198,35 @@ int main(const int argc, const char** argv){
     return EXIT_SUCCESS;
 }
 
+
+void initPrototypeValues(SpaceObject& prototype, NewPlanet& obj, int width, int height){
+    // this code is executed once when the create window is opened
+    obj.color = sf::Color{1, 1, 122, 255};
+    obj.mass = 100;
+    obj.mposition[0] = absolutePos(width/2);
+    obj.mposition[1] = absolutePos(height/2);
+    obj.radius = 6371000;
+     
+    prototype.setMPosition(sf::Vector2f(obj.mposition[0], obj.mposition[1]));
+    prototype.setFillColor(obj.color);
+    prototype.setMRadius(obj.radius);
+}
+
 void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     // handling the keyboard input for the camera movement
     // TODO: add mouse dragging
 
+    ImGuiIO& io = ImGui::GetIO();
+    if(io.WantCaptureKeyboard){
+        cameraVelocity.x = 0;
+        cameraVelocity.y = 0;
+        return;
+    }
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
         if(cameraVelocity.y <= 4){
-            cameraVelocity.y += 0.1;
+            cameraVelocity.y += 0.2;
         }   
     }
     else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
@@ -176,7 +240,7 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
         if(cameraVelocity.y >= -4){
-            cameraVelocity.y -= 0.1;
+            cameraVelocity.y -= 0.2;
         }   
     }
     else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
@@ -192,7 +256,7 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
         if(cameraVelocity.x <= 4){
-            cameraVelocity.x += 0.1;
+            cameraVelocity.x += 0.2;
         }   
     }
     else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
@@ -206,7 +270,7 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
         if(cameraVelocity.x >= -4){
-            cameraVelocity.x -= 0.1;
+            cameraVelocity.x -= 0.2;
         }   
     }
     else if(not sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
@@ -221,7 +285,7 @@ void UpdateCameraVelocity(sf::Vector2f &cameraVelocity){
 
 bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name){
     for(SpaceObject& i: objects){
-        if(name == i.name){
+        if(name == i.getName()){
             return true;
         }
     }

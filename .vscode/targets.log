@@ -7,8 +7,9 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri May 27 19:41:40 2022
+# Make data base, printed on Sat May 28 22:17:04 2022
 
 # Variables
 
@@ -27,7 +28,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-e2365f36-4068-44b8-ac8a-88ee2e1f60a3-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3ed54c1b-16d2-4f10-86ed-617a6974d587-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -45,7 +46,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17540_WFYQBZFCPDHVVKII
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13456_VZPVVGKAWMLFPTKN
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -101,7 +102,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 17540
+VSCODE_PID = 13456
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -215,7 +216,8 @@ SESSIONNAME = Console
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
-PROCESSOR_REVISION = 9e0a
+PROCESSOR_REVISION = 9e0 
+a
 # makefile (from 'makefile', line 1)
 CC = g++
 # environment
@@ -231,7 +233,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653672014): 25 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653762276): 25 files, no impossibilities.
 
 # 25 files, no impossibilities in 1 directories.
 
@@ -376,7 +378,8 @@ imgui_demo.o: lib\imgui_demo.cpp
 # Not a target:
 lib\imgui_draw.cpp:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  Modification time ne 
+ver checked.
 #  File has not been updated.
 
 # files hash-table stats:
@@ -393,6 +396,6 @@ lib\imgui_draw.cpp:
 # strcache performance: lookups = 67 / hit rate = 47%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=0/67=0%
-# Finished Make data base on Fri May 27 19:41:40 2022
+# Finished Make data base on Sat May 28 22:17:04 2022
 
  

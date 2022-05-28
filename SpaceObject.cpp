@@ -107,7 +107,7 @@ bool SpaceObject::window(){
         setMPosition(sf::Vector2f(mposarr[0], mposarr[1]));
         
 
-        ImGui::DragFloat("mass", &mass);
+        ImGui::DragFloat("mass", &mass, 10000);
         static float mvelarr[2];
         mvelarr[0] = mvelocity.x;
         mvelarr[1] = mvelocity.y;
@@ -183,7 +183,11 @@ bool SpaceObject::isme(SpaceObject& other){
     return &other == this;
 }
 
+std::string SpaceObject::getName(){
+    return name;
+}
+
 std::ostream& operator<<(std::ostream& os, SpaceObject& obj){
-    os << "SpaceObject(mposition = (" << obj.getMPosition().x << ", " << obj.getMPosition().y << "), position = (" << obj.getPosition().x << ", " << obj.getPosition().y << "), mvelocity = (" << obj.mvelocity.x << ", " << obj.mvelocity.y << "), mass = " << obj.mass << ")"; 
+    os << "SpaceObject(name = " << obj.getName() << ", " << "mposition = (" << obj.getMPosition().x << ", " << obj.getMPosition().y << "), position = (" << obj.getPosition().x << ", " << obj.getPosition().y << "), mvelocity = (" << obj.mvelocity.x << ", " << obj.mvelocity.y << "), mass = " << obj.mass << ")"; 
     return os;
 }
