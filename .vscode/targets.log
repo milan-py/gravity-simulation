@@ -7,9 +7,8 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sat May 28 22:17:04 2022
+# Make data base, printed on Sun May 29 17:58:24 2022
 
 # Variables
 
@@ -28,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3ed54c1b-16d2-4f10-86ed-617a6974d587-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a5e76683-bde2-42ed-b081-d566c2f9f919-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -46,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13456_VZPVVGKAWMLFPTKN
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17916_JWWZJAFSPNPXEDUJ
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -102,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 13456
+VSCODE_PID = 17916
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -216,8 +215,7 @@ SESSIONNAME = Console
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
-PROCESSOR_REVISION = 9e0 
-a
+PROCESSOR_REVISION = 9e0a
 # makefile (from 'makefile', line 1)
 CC = g++
 # environment
@@ -233,7 +231,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653762276): 25 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653772779): 25 files, no impossibilities.
 
 # 25 files, no impossibilities in 1 directories.
 
@@ -248,21 +246,21 @@ imgui_widgets.o: lib\imgui_widgets.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 15):
-	g++ lib\imgui_widgets.cpp -c -I include/ 
+	$(CC) lib\imgui_widgets.cpp -c -I include/ 
 
 imgui_tables.o: lib\imgui_tables.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 19):
-	g++ lib\imgui_tables.cpp -c -I include/ 
+	$(CC) lib\imgui_tables.cpp -c -I include/ 
 
 imgui-SFML.o: lib\imgui-SFML.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 21):
-	g++ lib\imgui-SFML.cpp -c -I include/ 
+	$(CC) lib\imgui-SFML.cpp -c -I include/ 
 
 # Not a target:
 lib\imgui.cpp:
@@ -281,7 +279,7 @@ imgui.o: lib\imgui.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 17):
-	g++ lib\imgui.cpp -c -I include/
+	$(CC) lib\imgui.cpp -c -I include/
 
 # Not a target:
 lib\imgui_widgets.cpp:
@@ -292,7 +290,8 @@ lib\imgui_widgets.cpp:
 # Not a target:
 lib\imgui-SFML.cpp:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  Modification time never checke 
+d.
 #  File has not been updated.
 
 # Not a target:
@@ -312,7 +311,7 @@ output: main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 4):
-	g++ main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 -static
+	$(CC) main.o SpaceObject.o imgui_draw.o imgui_widgets.o imgui.o imgui_tables.o imgui-SFML.o imgui_demo.o -o bin/main.exe -std=c++17 -Wall -Wextra -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network -lopengl32 -static
 	
 
 # Not a target:
@@ -327,7 +326,7 @@ imgui_draw.o: lib\imgui_draw.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 13):
-	g++ lib\imgui_draw.cpp -c -I include/ 
+	$(CC) lib\imgui_draw.cpp -c -I include/ 
 
 # Not a target:
 main.cpp:
@@ -340,7 +339,7 @@ main.o: main.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 8):
-	g++ -c main.cpp -std=c++17 -I include/
+	$(CC) -c main.cpp -std=c++17 -I include/
 
 # Not a target:
 SpaceObject.cpp:
@@ -357,7 +356,7 @@ SpaceObject.hpp:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-27 00:10:30
+#  Last modified 2022-05-29 17:56:08
 #  File has been updated.
 #  Successfully updated.
 
@@ -366,20 +365,19 @@ SpaceObject.o: SpaceObject.cpp SpaceObject.hpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 10):
-	g++ -c SpaceObject.cpp -std=c++17 -I include/
+	$(CC) -c SpaceObject.cpp -std=c++17 -I include/
 
 imgui_demo.o: lib\imgui_demo.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 23):
-	g++ lib\imgui_demo.cpp -c -I include/ 
+	$(CC) lib\imgui_demo.cpp -c -I include/ 
 
 # Not a target:
 lib\imgui_draw.cpp:
 #  Implicit rule search has not been done.
-#  Modification time ne 
-ver checked.
+#  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
@@ -396,6 +394,6 @@ ver checked.
 # strcache performance: lookups = 67 / hit rate = 47%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=0/67=0%
-# Finished Make data base on Sat May 28 22:17:04 2022
+# Finished Make data base on Sun May 29 17:58:24 2022
 
  

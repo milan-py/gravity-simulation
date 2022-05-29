@@ -12,12 +12,14 @@ constexpr float EARTH_RADIUS = 6371000;
 
 #define absolutePos(x) ((x)/FACTOR)
 
+#define arrtocol(arr) sf::Color(arr[0] * 255, arr[1] * 255, arr[2] * 255, arr[3] * 255)
+
 struct WindowSize{
     int width, height;
 };
 struct NewPlanet{
     float mposition[2] = {0, 0}, mvelocity[2] = {0, 0};
-    sf::Color color{1, 1, 122, 255};
+    float color[4] = {0, 0, 1, 1};
     float mass = 1000, radius = 6371000;
     char name[100] = {'\0'};
     char errorMsg[100] = {'\0'};
@@ -130,13 +132,14 @@ int main(const int argc, const char** argv){
         }
         // Gui for creating a new planet
         if(createWindowOpened){
-            ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
+            ImGui::SetNextWindowSize(ImVec2(550, 750), ImGuiCond_FirstUseEver);
             ImGui::Begin("create planet", &createWindowOpened);
                 ImGui::InputText("name", newObj.name, 100);
                 ImGui::InputFloat2("mposition", newObj.mposition);
                 ImGui::InputFloat2("mvelocity", newObj.mvelocity);
                 ImGui::InputFloat("mass", &newObj.mass);
                 ImGui::InputFloat("radius", &newObj.radius);
+                ImGui::ColorPicker4("color", newObj.color);
                 
                 
                 if(ImGui::Button("create")){
@@ -147,13 +150,14 @@ int main(const int argc, const char** argv){
                         strncpy_s(newObj.errorMsg, "name already exists", 100);
                     }
                     else{
-                        spaceObjects.push_back(SpaceObject(newObj.name, sf::Vector2f(newObj.mposition[0], newObj.mposition[1]), FACTOR, newObj.radius, newObj.color, newObj.mass));
+                        spaceObjects.push_back(SpaceObject(newObj.name, sf::Vector2f(newObj.mposition[0], newObj.mposition[1]), FACTOR, newObj.radius, arrtocol(newObj.color), newObj.mass));
                         newObj.errorMsg[0] = '\0';
                     }
                 }
 
                 // updating the prototype object
                 prototypeObj.setMPosition(sf::Vector2f(newObj.mposition[0], newObj.mposition[1]));
+                prototypeObj.setFillColor(arrtocol(newObj.color));
                 prototypeObj.setMRadius(newObj.radius);
 
                 ImGui::Text(newObj.errorMsg); // shows an error message if a user input is invalid
@@ -201,14 +205,17 @@ int main(const int argc, const char** argv){
 
 void initPrototypeValues(SpaceObject& prototype, NewPlanet& obj, int width, int height){
     // this code is executed once when the create window is opened
-    obj.color = sf::Color{1, 1, 122, 255};
+    obj.color[0] = 0;
+    obj.color[1] = 0;
+    obj.color[2] = 1;
+    obj.color[3] = 1;
     obj.mass = 100;
     obj.mposition[0] = absolutePos(width/2);
     obj.mposition[1] = absolutePos(height/2);
     obj.radius = 6371000;
      
     prototype.setMPosition(sf::Vector2f(obj.mposition[0], obj.mposition[1]));
-    prototype.setFillColor(obj.color);
+    prototype.setFillColor(arrtocol(obj.color));
     prototype.setMRadius(obj.radius);
 }
 
