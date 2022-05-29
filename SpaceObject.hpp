@@ -36,8 +36,8 @@ class SpaceObject : public sf::CircleShape{
 
         bool window(); // shows an imgui window if showWindow is true returns thing from imgui
 
-        bool ispressed(const sf::RenderWindow& window); // checks if mouse pressed object
-        bool ismouseon(const sf::RenderWindow& window); // checks if mouse is over object on and left key is pressed
+        bool ispressed(const sf::RenderWindow& window, const sf::View& view); // checks if mouse pressed object
+        bool ismouseon(const sf::RenderWindow& window, const sf::View& view); // checks if mouse is over object on and left key is pressed
         bool isme(SpaceObject& other);
         
         float mass;

@@ -123,15 +123,21 @@ bool SpaceObject::window(){
     return true;
 }
 
-bool SpaceObject::ispressed(const sf::RenderWindow& window){
+bool SpaceObject::ispressed(const sf::RenderWindow& window, const sf::View& view){
     ImGuiIO& io = ImGui::GetIO();
+    const float pxradius = getRadius();
     if(io.WantCaptureMouse){
         return false;
     }
 
     sf::Vector2f pxpos = getPosition();
-    pxpos.x += getRadius(); 
-    pxpos.y += getRadius(); 
+    pxpos.x += pxradius; 
+    pxpos.y += pxradius; 
+    std::cout << "previous: " << pxpos.x << ", " << pxpos.y << '\n';
+    pxpos.x += window.getSize().x / 2 - view.getCenter().x ; 
+    pxpos.y += window.getSize().y / 2 - view.getCenter().y ; 
+    std::cout << "now: " << pxpos.x << ", " << pxpos.y << '\n';
+
     sf::Vector2i mousepos = sf::Mouse::getPosition(window);
 
     pxpos.x = pxpos.x - mousepos.x;
@@ -144,7 +150,7 @@ bool SpaceObject::ispressed(const sf::RenderWindow& window){
         pressedprevious = false;
         return false;
     }
-    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < getRadius()){ // Pythagoras
+    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < pxradius){ // Pythagoras
         pressednow = true;
         if(pressedprevious){
             pressednow = false;
@@ -154,21 +160,22 @@ bool SpaceObject::ispressed(const sf::RenderWindow& window){
     return pressednow;
 }
 
-bool SpaceObject::ismouseon(const sf::RenderWindow& window){
+bool SpaceObject::ismouseon(const sf::RenderWindow& window, const sf::View& view){
+    const float pxradius = getRadius();
     ImGuiIO& io = ImGui::GetIO();
     if(io.WantCaptureMouse){
         return false;
     }
 
     sf::Vector2f pxpos = getPosition();
-    pxpos.x += getRadius(); 
-    pxpos.y += getRadius(); 
+    pxpos.x += pxradius; 
+    pxpos.y += pxradius; 
     sf::Vector2i mousepos = sf::Mouse::getPosition(window);
 
     pxpos.x = pxpos.x - mousepos.x;
     pxpos.y = pxpos.y - mousepos.y;
 
-    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < getRadius()){ // Pythagoras
+    if(std::sqrt(pxpos.x*pxpos.x+pxpos.y*pxpos.y) < pxradius){ // Pythagoras
         return true;
     }
 

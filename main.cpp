@@ -52,7 +52,6 @@ int main(const int argc, const char** argv){
     io.FontGlobalScale = 1.0f;
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.0f);
-    
 
     sf::Vector2i viewpos{0, 0};
     sf::View view = window.getDefaultView();
@@ -84,9 +83,7 @@ int main(const int argc, const char** argv){
             }
             if(event.type == sf::Event::Resized){
                 view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
-                std::cout << "width: " << event.size.width << " height: " << event.size.height <<'\n';
                     io.FontGlobalScale = (static_cast<float>(event.size.width)-1200)/1000+1;
-                    std::cout << io.FontGlobalScale << '\n';
             }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::N) and sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
@@ -184,7 +181,7 @@ int main(const int argc, const char** argv){
 
         window.clear(sf::Color::Black);
         for(SpaceObject &i: spaceObjects){
-            if(i.ispressed(window)){
+            if(i.ispressed(window, view)){
                 i.showWindow = !i.showWindow;
             }
             i.window();

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 29 17:58:24 2022
+# Make data base, printed on Sun May 29 19:44:53 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\milan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a5e76683-bde2-42ed-b081-d566c2f9f919-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7a3b1645-e567-4c47-a0f4-427ee4490e60-sock
 # environment
 VSCODE_CWD = C:\Users\milan\Desktop\graphics\gravity
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 LUA_DEV = C:\Program Files (x86)\Lua\5.1
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17916_JWWZJAFSPNPXEDUJ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19376_RKSBXDZURFDZVDRD
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -101,7 +101,7 @@ MAKEFILE_LIST := makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 17916
+VSCODE_PID = 19376
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -199,7 +199,8 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-TEMP = C:\Users\milan\AppData\Local\Temp
+TEMP 
+ = C:\Users\milan\AppData\Local\Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\e4bc06bbc5ff1f08bbfc4048da47a488-1.67.2-main-sock
 # default
@@ -231,7 +232,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653772779): 25 files, no impossibilities.
+# . (key c:/Users/milan/Desktop/graphics/gravity, mtime 1653846027): 25 files, no impossibilities.
 
 # 25 files, no impossibilities in 1 directories.
 
@@ -290,8 +291,7 @@ lib\imgui_widgets.cpp:
 # Not a target:
 lib\imgui-SFML.cpp:
 #  Implicit rule search has not been done.
-#  Modification time never checke 
-d.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -394,6 +394,6 @@ lib\imgui_draw.cpp:
 # strcache performance: lookups = 67 / hit rate = 47%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=0/67=0%
-# Finished Make data base on Sun May 29 17:58:24 2022
+# Finished Make data base on Sun May 29 19:44:53 2022
 
  
