@@ -12,6 +12,7 @@ class SpaceObject : public sf::CircleShape{
         // the functions with M should be used to scale everything on the screen
         void moveMVel(float dt = 1);
 
+        
 		sf::Vector2f getMPosition();
 
         void setMRadius(float radius);

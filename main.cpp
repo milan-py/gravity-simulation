@@ -5,18 +5,19 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-constexpr float FACTOR = 0.00005f;
+float FACTOR = 0.00005f;
 
 constexpr float EARTH_MASS = 5.972e24f;
 constexpr float EARTH_RADIUS = 6371000;
+
+constexpr float width = 1500;
+constexpr float height = 1000;
 
 #define absolutePos(x) ((x)/FACTOR)
 
 #define arrtocol(arr) sf::Color(arr[0] * 255, arr[1] * 255, arr[2] * 255, arr[3] * 255)
 
-struct WindowSize{
-    int width, height;
-};
+
 struct NewPlanet{
     float mposition[2] = {0, 0}, mvelocity[2] = {0, 0};
     float color[4] = {0, 0, 1, 1};
@@ -25,7 +26,6 @@ struct NewPlanet{
     char errorMsg[100] = {'\0'};
 };
 
-struct WindowSize readWindowSize(const int argc, const char** argv);
 void UpdateCameraVelocity(sf::Vector2f &cameraVelocity);
 SpaceObject createSpaceObject();
 bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name);
@@ -33,9 +33,13 @@ void initPrototypeValues(SpaceObject& prototype, NewPlanet& obj, int width, int 
 
 
 int main(const int argc, const char** argv){
-
-    auto [width, height] = readWindowSize(argc, argv);
     
+    if(argc > 1){
+        FACTOR = std::stof(argv[1]);
+        std::cout << "argv" << argv[1] << '\n';
+        std::cout << "Factor: " << FACTOR << '\n';
+    }
+
     std::cout << "\e[?25l"; //cursor off
 
     sf::RenderWindow window(sf::VideoMode(width, height), "lol", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
@@ -45,7 +49,7 @@ int main(const int argc, const char** argv){
         return EXIT_FAILURE;
     }
     ImGuiIO& io = ImGui::GetIO();
-    io.FontGlobalScale = 1.6f;
+    io.FontGlobalScale = 1.0f;
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.0f);
     
@@ -80,6 +84,9 @@ int main(const int argc, const char** argv){
             }
             if(event.type == sf::Event::Resized){
                 view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
+                std::cout << "width: " << event.size.width << " height: " << event.size.height <<'\n';
+                    io.FontGlobalScale = (static_cast<float>(event.size.width)-1200)/1000+1;
+                    std::cout << io.FontGlobalScale << '\n';
             }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::N) and sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
@@ -122,7 +129,9 @@ int main(const int argc, const char** argv){
                 ImGui::EndMenu();
             }
             ImGui::Separator();
-            ImGui::Text("seconds passed: %.3f", passedTime);
+            ImGui::Text("m: %.4f", passedTime/60);
+            ImGui::Separator();
+            ImGui::Text("s: %.3f", passedTime);
             ImGui::SliderFloat("", &timeFactor, 0, 10000, "%.2f");
             if(ImGui::Button("1x")){
                 timeFactor = 1;
@@ -167,13 +176,6 @@ int main(const int argc, const char** argv){
         // hides prototype object if not needed
         if(not createWindowOpened){
             prototypeObj.setFillColor(sf::Color::Transparent);
-        }
-        
-        // std::cout << "fill Color: " << static_cast<int>(prototypeObj.getFillColor().a) << '\n';
-
-        // std::cout << prototypeObj.getPosition().x << ", " << prototypeObj.getPosition().y << '\n';
-        for(int i = 0; i < spaceObjects.size(); ++i){
-            std::cout << spaceObjects[i] << i << '\n';
         }
 
         dt *= timeFactor;
@@ -297,20 +299,4 @@ bool spaceobjname(std::vector<SpaceObject>& objects, const std::string& name){
         }
     }
     return false;
-}
-struct WindowSize readWindowSize(const int argc, const char** argv){
-
-
-
-    struct WindowSize size = {0, 0};
-
-    if(argc < 3){
-        size.width = 1500;
-        size.height = 1000;
-    }
-    else{
-        size.width = std::atoi(argv[1]);
-        size.height = std::atoi(argv[2]);
-    }
-    return size;
 }

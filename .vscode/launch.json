@@ -11,8 +11,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}\\bin\\main.exe",
 			"args": [
-				"1500",
-				"1000"
+
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
